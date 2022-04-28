@@ -1,0 +1,75 @@
+
+<ng-container *ngIf="user">
+  <div class="d-flex justify-content-start flex-gap">
+    <div  class="d-block">
+      <div class="h5 mt-5 text-primary">User Details</div>
+      <div class="mb-2">
+        <div class="label">Name</div>
+        <div>{{user.name}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Email</div>
+        <div>{{user.email}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Phone</div>
+        <div>{{user.phone}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Website</div>
+        <div>{{user.website}}</div>
+      </div>
+    </div>
+
+
+
+    <div  class="d-block">
+      <div class="h5 mt-5 text-primary">Company</div>
+      <div class="mb-2">
+        <div class="label">Name</div>
+        <div>{{user.company.name}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Catch Phrase</div>
+        <div>{{user.company.catchPhrase}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Business Sector</div>
+        <div>{{user.company.bs}}</div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <div class="d-flex justify-content-start flex-gap">
+    <div class="d-block">
+      <div class="h5 mt-2 text-primary">User Address</div>
+      <div class="mb-2">
+        <div class="label">Suite / Street</div>
+        <div>{{user.address.suite}}, {{user.address.street}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">City / Zip Code</div>
+        <div>{{user.address.city}}, {{user.address.zipcode}}</div>
+      </div>
+      <div class="mb-2">
+        <div class="label">Latitude &bullet; Longitude</div>
+        <div>{{user.address.geo.lat}} &bullet; {{user.address.geo.lng}}</div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <div>
+    <button [routerLink]="[user.id +'/edit']" class="btn btn-primary me-2">Edit</button>
+    <button (click)="onCancel()" class="btn btn-default">Back to List</button>
+  </div>
+</ng-container>
+
+
+
+
+
+

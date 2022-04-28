@@ -1,0 +1,32 @@
+
+<app-loader [isLoading]="isLoading"></app-loader>
+
+<div *ngIf="!isLoading" class="container">
+
+
+  <div *ngIf="!selectedUser">
+    <table class="table table-hover accordion-table" >
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Company</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let user of users">
+        <tr (click)="selectUser(user)" class="main-level">
+          <td>{{ user.name }}</td>
+          <td>{{ user.company.name }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="selectedUser">
+    <app-user-detail [user]="selectedUser" (cancelEvent)="onCancelUserDetail()" ></app-user-detail>
+  </div>
+
+
+</div>

@@ -1,0 +1,17 @@
+
+.label {
+  font-weight: 100;
+  font-size: 0.9rem;
+}
+
+.flex-gap {
+  gap: 5rem;
+}
+
+button {
+  min-width: 100px;
+}
+
+.h5 {
+  text-transform: uppercase;
+}

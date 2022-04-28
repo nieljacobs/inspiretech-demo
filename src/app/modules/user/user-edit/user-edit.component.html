@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <app-loader [isLoading]="isLoading"></app-loader>
+      <div *ngIf="errorMessage && errorMessage.length > 0" class="alert alert-danger text-center">
+        {{errorMessage}}
+      </div>
+
+      <div *ngIf="form" class="mb-5">
+        <div class="h5 mt-4 text-primary">USER DETAILS</div>
+        <form [formGroup]="form" (ngSubmit)="saveChanges()">
+          <div class="form-group mb-3">
+            <label class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Name"
+              formControlName="name" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Username"
+              formControlName="username" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control my-input"
+              placeholder="Email"
+              formControlName="email" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Phone</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Phone"
+              formControlName="phone" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Website</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Website"
+              formControlName="website" />
+          </div>
+
+          <div class="h5 mt-4 text-primary">USER ADDRESS</div>
+          <div class="form-group mb-3">
+            <label class="form-label">Suite</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Suite"
+              formControlName="addressSuite" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Street</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Street"
+              formControlName="addressStreet" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="City"
+              formControlName="addressCity" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Zip Code</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Zip Code"
+              formControlName="addressZipCode" />
+          </div>
+
+          <div class="h5 mt-4 text-primary">GEO LOCATION</div>
+          <div class="form-group mb-3">
+            <label class="form-label">Longitude</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Longitude"
+              formControlName="addressGeoLon" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Latitude</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Latitude"
+              formControlName="addressGeoLat" />
+          </div>
+
+          <div class="h5 mt-4 text-primary">COMPANY</div>
+          <div class="form-group mb-3">
+            <label class="form-label">Company Name</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Company Name"
+              formControlName="companyName" />
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label">Catch-Phrase</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Catch-Phrase"
+              formControlName="companyCatchPhrase" />
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label">Business Sector</label>
+            <input
+              type="text"
+              class="form-control my-input"
+              placeholder="Business Sector"
+              formControlName="companyBs" />
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+            <button [routerLink]="['users']" type="button" class="btn btn-default me-2">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+

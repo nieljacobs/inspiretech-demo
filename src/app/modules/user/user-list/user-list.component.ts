@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/shared/models/user.model';
 
+
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -11,8 +13,12 @@ export class UserListComponent implements OnInit {
 
   errorMessage: string = '';
   isLoading: boolean = false;
+
   users: User[] = [];
+  usersFiltered: User[] = [];
+
   selectedUser: User;
+  searchProps: string[] = ['name2', 'email'];
 
   constructor(private userService: UserService) { }
 
@@ -29,6 +35,8 @@ export class UserListComponent implements OnInit {
         next: (users: User[]) => {
 
           this.users = users;
+          this.usersFiltered = this.users;
+
           this.isLoading = false;
         },
         error: err => {
@@ -37,6 +45,11 @@ export class UserListComponent implements OnInit {
         }
       }
     )
+  }
+
+  onSearchUpdate(filteredUsers: User[]): void {
+    this.usersFiltered = filteredUsers;
+
   }
 
   selectUser(user: User): void {

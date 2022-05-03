@@ -5,6 +5,9 @@
 
 
   <div *ngIf="!selectedUser">
+    <div>
+      <app-search [data]="users" [searchProps]="searchProps" (onSearched)="onSearchUpdate($event)" ></app-search>
+    </div>
     <table class="table table-hover accordion-table" >
       <thead>
         <tr>
@@ -14,7 +17,7 @@
         </tr>
       </thead>
 
-      <tbody *ngFor="let user of users">
+      <tbody *ngFor="let user of usersFiltered">
         <tr (click)="selectUser(user)" class="main-level">
           <td>{{ user.name }}</td>
           <td>{{ user.company.name }}</td>

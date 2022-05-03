@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { CalendarValue, ECalendarValue, IDatePickerConfig } from 'ng2-date-picker';
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/shared/models/user.model';
 
@@ -16,6 +17,18 @@ export class UserEditComponent implements OnInit {
   user: User;
   form: FormGroup;
 
+  dobRequired: boolean = true;
+  dobMin: string = '10-06-1980';
+  dobMax: string = '10-12-1990';
+
+  dateConfig: IDatePickerConfig = {
+    format: 'DD-MM-YYYY',
+    showTwentyFourHours: true,
+    firstDayOfWeek: 'mo',
+    returnedValueType: ECalendarValue.String,
+    disableKeypress: true
+  };
+
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -29,6 +42,13 @@ export class UserEditComponent implements OnInit {
         this.getUser(userId);
       }
     )
+  }
+
+  onDobChange(value: CalendarValue): void {
+
+    if(!value) return;
+
+    console.log(value);
   }
 
   getUser(id: number): void {
@@ -60,6 +80,7 @@ export class UserEditComponent implements OnInit {
 
     this.form = this.fb.group({
       name: [ this.user.name, [Validators.required]],
+      dob: [ '28-02-2022', Validators.required ],
       username: [this.user.username, Validators.required],
       email: [this.user.email, [Validators.email, Validators.required]],
       phone: [this.user.phone, [Validators.required]],
@@ -84,8 +105,15 @@ export class UserEditComponent implements OnInit {
 
     //usually I would do a validation check here but seeing as it's
     //not part of the spec I won't implement it.
+
+    console.log('VALID:', this.form.valid);
+
+    let dob = this.form.get('dob').value;
+    console.log('dob: ', dob);
+
+    console.log(this.form);
     this.updateUser();
-    console.log(this.user);
+    //console.log(this.user);
     //Submit to service
 
   }
